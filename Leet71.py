@@ -1,15 +1,20 @@
 import unittest
+# Medium
+# Stack
 class Solution:
     def simplifyPath(self, path: str) -> str:
+        #Create stack to keep track of the full path
         stack = []
+        # Iterate through each part of the input, divided by /
         for x in path.split("/"):
+            # If the stack has elements, remove the last element (per '..')
             if x == "..":
-                if len(stack):
+                if stack:
                     stack.pop()
-            elif x == "." or not x:
-                pass
-            else:
+            # Else if x is not empty or null and x does not equal '.' add element to stack
+            elif x and x != ".":
                 stack.append(x)
+        # Return a '/' plus all the elements in the stack combined by '/'
         return "/" + "/".join(stack)
 
 print(Solution.simplifyPath(Solution, "/a/./b/../../c/"))

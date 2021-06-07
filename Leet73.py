@@ -29,19 +29,22 @@ class Solution:
         print("\nAfter:")
         for x in matrix:
             print(x)
-
+# Medium
+# Sets
     def setZeroes2(self, matrix):
-        column = len(matrix)
-        row = len(matrix[0])
+        row, column = len(matrix), len(matrix[0])
         hor, vert = set(), set()
-
-        for x in range(column):
-            for y in range(row):
+        # Iterate through all the elements
+        for x in range(row):
+            for y in range(column):
+                # If 0 is found, record the x and y in the set
                 if matrix[x][y] == 0:
                     hor.add(x)
                     vert.add(y)
-        for x in range(column):
-            for y in range(row):
+        # Iterate through all the elements again
+        for x in range(row):
+            for y in range(column):
+                    # If the current element is in either set then set it equal to 0
                     if x in hor or y in vert:
                         matrix[x][y] = 0
 
